@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<efcore context-namespace="PhoneBook" namespace="PhoneBook" p1:name="cnPhoneBook" p1:Guid="8993bf14-af10-453d-a32e-54ed6702eed1" xmlns:p1="http://devart.com/schemas/EntityDeveloper/1.0">
+  <class name="Person" entity-set="People" p1:Guid="c8bcb048-df60-4ebe-ae79-b6cd1b043ed7">
+    <id name="Id" type="Int16" value-generated="OnAdd" p1:ValidateRequired="true" p1:Guid="2233df11-f8f6-4b51-857b-7dd061743b41" p1:DoNotGenerateDataMemberAttribute="True">
+      <column name="" />
+    </id>
+    <property name="Name" type="String" p1:ValidateRequired="true" p1:Guid="2bf02085-94d7-4ccf-a3fd-69af924663a0">
+      <column name="" />
+    </property>
+    <property name="Remark" type="String" p1:ValidateRequired="true" p1:Guid="a65e94cb-88e4-40b9-8df0-3c3042b77e8f">
+      <column name="" />
+    </property>
+  </class>
+  <class name="Number" entity-set="Numbers" p1:Guid="8924e3da-54e0-4843-b8f5-129cde30ddca">
+    <id name="Id" type="Int16" value-generated="OnAdd" p1:ValidateRequired="true" p1:Guid="f62fb5ca-0dbe-442c-b127-ced5e6c50d75">
+      <column name="" />
+    </id>
+    <property name="NumberString" type="String" p1:ValidateRequired="true" p1:Guid="ca0f1d36-58bd-4112-9055-78f1e336259d">
+      <column name="" />
+    </property>
+  </class>
+  <associations>
+    <association name="enNumber_enPerson" cardinality="ManyToMany" p1:Guid="92dc2c6e-ea94-4816-9696-09fe7f94023a">
+      <end1 multiplicity="Many" name="Numbers" class="Person" relation-class="Number" lazy="False" p1:Guid="ebd96cc2-1d2c-47d5-9c93-ed64414f579f">
+        <property name="Id" />
+      </end1>
+      <end2 multiplicity="Many" name="People" class="Number" relation-class="Person" lazy="False" p1:Guid="c2822e5e-fdca-4f0b-a478-1887b442e21a">
+        <property name="Id" />
+      </end2>
+    </association>
+  </associations>
+</efcore>

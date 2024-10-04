@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1" MembersFormat="FullSignature">
+  <Class Name="PhoneBook.Person">
+    <Position X="2.75" Y="0.75" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAgAAAAAAQAACAAAAAAAAAAAAAAAQA=</HashCode>
+      <FileName>efPhoneBook.Person.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PhoneBook.Number">
+    <Position X="6" Y="0.75" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAIAAAAAAAAAAAAAAACAAAABAAAAAAAAAAAA=</HashCode>
+      <FileName>efPhoneBook.Number.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PhoneBook.cnPhoneBook">
+    <Position X="2.75" Y="3.5" Width="5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAYAAAMBgAAAAgAgAECAgAIAQAAAAAAAAAEA=</HashCode>
+      <FileName>efPhoneBook.cnPhoneBook.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
