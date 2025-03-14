@@ -1,10 +1,13 @@
 ﻿using System;
 using System.Linq;
+using Microsoft.Data.SqlClient;
+using Microsoft.EntityFrameworkCore;
 using PhoneBook;
 namespace CnEFMF_PhoneBook
 {
 	class Program
-	{		static void Main(string[] args)
+	{	
+		static void Main(string[] args)
 		{	Console.WriteLine("Simple phonebook");
 			cnPhoneBook cn = new cnPhoneBook();
 			cn.Database.EnsureCreated();
@@ -23,11 +26,35 @@ namespace CnEFMF_PhoneBook
 				try
 				{	cn.SaveChanges();
 					Console.WriteLine("All data saved to the database!");
+					DetachDb(cn);
 				}
 				catch (Exception exc)
 				{	Console.WriteLine(exc.Message); 
 				}
 			}
 		}
+
+		private static void DetachDb(cnPhoneBook cn)
+		{
+			cn.Database.OpenConnection();
+			var connection = cn.Database.GetDbConnection();
+			if (connection.State == System.Data.ConnectionState.Closed)
+			{	connection.Open();
+			}
+			string[] commands =
+			{ "USE master",
+				$"ALTER DATABASE [{connection.Database}] SET SINGLE_USER WITH ROLLBACK IMMEDIATE",
+				$"ALTER DATABASE [{connection.Database}] SET OFFLINE WITH ROLLBACK IMMEDIATE",
+				$"EXEC sp_detach_db '{connection.Database}'"
+			};
+			using (var sqlCommand = new SqlCommand())
+			{	sqlCommand.Connection = connection as SqlConnection;
+				foreach (string command in commands)
+				{	sqlCommand.CommandText = command;
+					sqlCommand.ExecuteNonQuery();
+				}
+			}
+		}
+
 	}
 }
